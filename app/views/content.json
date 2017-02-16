@@ -1,0 +1,8 @@
+{
+	"views": {
+		"home": false,
+		"project": {
+			"tesla": false
+		}
+	}
+}
