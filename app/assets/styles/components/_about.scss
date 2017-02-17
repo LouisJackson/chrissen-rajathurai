@@ -1,0 +1,53 @@
+.about {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: $black;
+	z-index: 5;
+	padding: 244px 50px 50px;
+	visibility: hidden;
+	opacity: 0;
+	@include transition(all 0.3s ease-in-out);
+	&__introduction {
+		width: 70%;
+		float: left;
+		p {
+			color: $grey;
+			width: 100%;
+			max-width: 500px;
+			&:not(:last-child) {
+				margin-bottom: rem(26px);
+			}
+			strong {
+				color: $white;
+			}
+		}
+	}
+	&__informations {
+		width: 30%;
+		float: left;
+		h2 {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__socials {
+		li {
+			margin-bottom: rem(10px);
+		}
+	}
+
+	&__credits {
+		color: $grey;
+		margin-top: 100px;
+		p:before {
+			top: 50%;
+		}
+	}
+	&--visible {
+		visibility: visible;
+		opacity: 1;
+	}
+}

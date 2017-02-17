@@ -1,14 +1,31 @@
+h1 {
+	font-family: $pop;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: rem(18px);
+	letter-spacing: rem(3px);
+	line-height: rem(19px);
+}
+
 h2 {
-	@include format-h1();
-	text-align: center;
+	@extend h1;
 }
 
 p {
-	@include format-paragraph();
+	font-family: $rob;
+	font-weight: 400;
+	font-size: rem(14px);
+	line-height: rem(26px);
+	letter-spacing: rem(1.5px);
 }
 
-.cta {
-	@include format-cta();
-	text-decoration: none;
-	color: $black;
+a.cta {
+	font-family: $rob;
+	font-weight: 400;
+	text-decoration: underline;
+	color: $white;
+	font-size: rem(14px);
+	letter-spacing: rem(1px);
+	line-height: rem(25px);
+	cursor: pointer;
 }

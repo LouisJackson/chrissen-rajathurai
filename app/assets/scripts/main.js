@@ -1,4 +1,5 @@
-window.router             = require('./partials/router.js');
+window.router = require('./partials/router.js');
+window.about  = require('./partials/about.js');
 
 (function() {
 
@@ -6,6 +7,7 @@ window.router             = require('./partials/router.js');
 		//load all class here
 	};
 
+	about.init();
 	router.init();
 	
 })();
