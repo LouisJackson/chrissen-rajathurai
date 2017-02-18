@@ -5,6 +5,13 @@ html, body{
    font-family: $rob, Helvetica, sans-serif;
    background-color: $black;
    color: $white;
+   overflow: hidden;
+}
+
+.page-content {
+	height: 100%;
+	padding-top: 183px;
+	box-sizing: border-box;
 }
 
 .with-line {
@@ -16,7 +23,7 @@ html, body{
 		width: 40px;
 		height: 1px;
 		left: -80px;
-		top: 2px;
+		top: 4px;
 		background-color: #575757;
 	}
 }

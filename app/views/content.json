@@ -1,6 +1,27 @@
 {
 	"views": {
-		"home": false,
+		"home": {
+			"projects": [
+				{
+					"title": "TeslaXHer",
+					"type": "UX/UI",
+					"link": "/project/tesla",
+					"teaser": "img/project-1-teaser.png"
+				},
+				{
+					"title": "LBPC",
+					"type": "UI",
+					"link": "/project/lbpc",
+					"teaser": "img/project-2-teaser.png"
+				},
+				{
+					"title": "Delivr'hetic",
+					"type": "UI",
+					"link": "/project/delivrhetic",
+					"teaser": "img/project-3-teaser.png"
+				}
+			]
+		},
 		"project": {
 			"tesla": false
 		}

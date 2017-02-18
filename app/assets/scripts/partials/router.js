@@ -7,7 +7,6 @@ module.exports = (function () {
 	var currentViewClass
 	var couldStateChange = true
 	var history = window.history
-	var content
 
 
 	var init = function() {
@@ -18,7 +17,7 @@ module.exports = (function () {
 
 		request.onload = () => {
 		  if (request.status >= 200 && request.status < 400) {
-		    content = JSON.parse(request.responseText)
+		    window.content = JSON.parse(request.responseText)
 			_bindLinks()
 			_onStateChange()
 		  }

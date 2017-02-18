@@ -6,12 +6,12 @@
 	bottom: 0;
 	background-color: $black;
 	z-index: 5;
-	padding: 244px 50px 50px;
+	padding: 233px 50px 50px;
 	visibility: hidden;
 	opacity: 0;
-	@include transition(all 0.3s ease-in-out);
+	@include transition(all 1s ease-in-out);
 	&__introduction {
-		width: 70%;
+		width: 65%;
 		float: left;
 		p {
 			color: $grey;
@@ -28,6 +28,8 @@
 	&__informations {
 		width: 30%;
 		float: left;
+		padding-left: 80px;
+		box-sizing: border-box;
 		h2 {
 			margin-bottom: 40px;
 		}
