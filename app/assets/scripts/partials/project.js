@@ -10,6 +10,8 @@ module.exports = (function () {
 
 		$project = document.querySelectorAll('.view-project')[0]
 
+		console.log($project)
+
 		if ($project != null) {
 			$gallery.galleryContainer = document.querySelectorAll('.teaser__gallery-container')[0]
 			$gallery.gallery = document.querySelectorAll('.teaser__gallery')[0]
@@ -47,8 +49,6 @@ module.exports = (function () {
 		for (var image of $gallery.images) {
 			POSITION.push(image.offsetTop - offset)
 		}
-
-		console.log(POSITION)
 
 	}
 

@@ -10,4 +10,11 @@
 		line-height: rem(19px);
 		margin-bottom: 20px;
 	}
+	a:not(.cta) {
+		position: absolute;
+		top: 50px;
+		right: 50px;
+		left: 50px;
+		bottom: 90px;
+	}
 }

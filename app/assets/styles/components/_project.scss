@@ -13,11 +13,8 @@
 			.scrollbox {
 				top: auto;
 				bottom: 50px;
-				opacity: 1;
+				opacity: 0;
 				@include transition(opacity 0.8s ease-in-out);
-				&--hidden {
-					opacity: 0;
-				}
 			}
 			.next-project {
 				position: absolute;
@@ -33,10 +30,20 @@
 			}
 		}
 		&__description {
-			margin-bottom: 70px;
+			margin-bottom: 40px;
+			opacity: 0;
+			@include transform(translateX(5%));
+			@include transition(opacity 1s ease-in-out 0s, transform 1s ease-in-out 0.2s);
 		}
 		&__legend {
 			margin-bottom: 40px;
+			font-size: rem(14px);
+			opacity: 0;
+			letter-spacing: rem(5px);
+			@include transition(all 1s ease-in-out);
+			&:before {
+				top: 50%;
+			}
 		}
 	}
 }
@@ -50,6 +57,29 @@
 				display: block;
 				margin: 0 auto 5%;
 			}
+		}
+	}
+}
+
+.view-loaded {
+	.teaser {
+		&__description {
+			opacity: 1;
+			@include transform(translateX(0%));
+			@include transition(all 1s ease-in-out 1.5s);
+		}
+		&__legend {
+			opacity: 1;
+			letter-spacing: rem(1px);
+			@include transition(all 1s ease-in-out 1.7s);
+		}
+	}
+	&.view-project .teaser__text .scrollbox {
+		opacity: 1;
+		@include transition(opacity 1s ease-in-out 1.3s);
+		&--hidden {
+			opacity: 0;
+			@include transition(opacity 0.8s ease-in-out 0s);
 		}
 	}
 }

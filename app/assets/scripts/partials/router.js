@@ -35,6 +35,7 @@ module.exports = (function () {
 
 	var _bindLinks = function() {
 		var $links = document.querySelectorAll('a:not([target])')
+		console.log($links)
 		for (var $link of $links) {
 			$link.addEventListener('click', _onLinkClick)
 		}
@@ -63,13 +64,16 @@ module.exports = (function () {
 
 	var _removeCurrView = function(view,params) {
 
-		$pageContent.style.display = 'none'
 		$pageContent.classList.remove('view-loaded')
-		$pageContent.classList.remove('currentViewClass')
-		_appendNewView(view, params)
+		setTimeout(() => {
+			$pageContent.classList.remove(currentViewClass)
+			_appendNewView(view, params)
+		}, 1000)
+		
 	};
 
 	var _appendNewView = function(view, params) {
+
 		var content = templates[view](params)
 		$pageContent.innerHTML = content
 
@@ -87,12 +91,15 @@ module.exports = (function () {
 				  $pageContent.className += ' ' + 'view-loaded'
 				currentViewClass = 'view-'+view
 				window.loadScripts()
-			}, 100)
+				_bindLinks()
+			}, 200)
 		}, 100)
 
 	};
 
 	var _updateView = function(view, params) {
+
+		console.log(currentViewClass)
 
 		if (currentViewClass) {
 			_removeCurrView(view,params)
@@ -102,6 +109,7 @@ module.exports = (function () {
 	};
 
 	var _onLinkClick = function(e) {
+
 		e.preventDefault()
 
 		if (couldStateChange) {
@@ -118,6 +126,8 @@ module.exports = (function () {
                  _onStateChange();
             }
         }
+
+        return false
 
 	}
 
