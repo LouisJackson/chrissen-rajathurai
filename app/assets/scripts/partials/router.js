@@ -29,7 +29,6 @@ module.exports = (function () {
 
 	var _onStateChange = function() {
 		var path = window.location.pathname.split('/')
-		console.log(window.location.pathname);
 		path.shift()
 		_setRouting(path)
 	}
@@ -49,7 +48,6 @@ module.exports = (function () {
 			_updateView('home', false)
 		} else if (view == 'project') {
 			var projectName = path[1]
-			console.log(projectName);
 			if (!projectName) {
 				_updateView('home', false)
 			}
@@ -89,12 +87,13 @@ module.exports = (function () {
 				  $pageContent.className += ' ' + 'view-loaded'
 				currentViewClass = 'view-'+view
 				window.loadScripts()
-			}, 500)
-		}, 200)
+			}, 100)
+		}, 100)
 
 	};
 
 	var _updateView = function(view, params) {
+
 		if (currentViewClass) {
 			_removeCurrView(view,params)
 		} else {

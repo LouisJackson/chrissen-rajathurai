@@ -1,0 +1,55 @@
+.view-project {
+	.teaser {
+		&__gallery-container {
+			transform: translateY(0px);
+			height: auto;
+			@include transition(transform 0.05s ease-in-out);
+			img {
+				width: 100%;
+				margin-bottom: 5%;
+			}
+		}
+		&__text {
+			.scrollbox {
+				top: auto;
+				bottom: 50px;
+				opacity: 1;
+				@include transition(opacity 0.8s ease-in-out);
+				&--hidden {
+					opacity: 0;
+				}
+			}
+			.next-project {
+				position: absolute;
+				bottom: 50px;
+				font-size: 14px;
+				font-family: $rob;
+				color: $grey;
+				opacity: 0;
+				@include transition(opacity 0.8s ease-in-out);
+				&--visible {
+					opacity: 1;
+				}
+			}
+		}
+		&__description {
+			margin-bottom: 70px;
+		}
+		&__legend {
+			margin-bottom: 40px;
+		}
+	}
+}
+
+.is-mobile {
+	.teaser {
+		&__gallery-container {
+			img {
+				width: auto;
+				height: calc(100vh - 283px);
+				display: block;
+				margin: 0 auto 5%;
+			}
+		}
+	}
+}

@@ -1,7 +1,8 @@
 module.exports = (function () {
 
 	'use strict'
-	var $home;
+
+	var $home
 	var $textFields = {}
 	var $slider = {}
 
@@ -27,7 +28,9 @@ module.exports = (function () {
 
 	var _setGallery = () => {
 
-		projects = content.views.home.projects
+		projects = content.views.project //get projects
+		projects = Object.keys(projects).map((k) => projects[k]) //convert object to array
+		
 		PROJECT_COUNT = projects.length
 
 		$textFields.title = document.querySelectorAll('.teaser__text h2')[0]
