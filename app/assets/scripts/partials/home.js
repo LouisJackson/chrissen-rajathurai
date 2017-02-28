@@ -21,7 +21,8 @@ module.exports = (function () {
 		$home = document.querySelectorAll('.view-home')[0]
 
 		if ($home != null) {
-			_setGallery();
+			CURRENT_PROJECT = 1
+			_setGallery()
 		}
 
 	}

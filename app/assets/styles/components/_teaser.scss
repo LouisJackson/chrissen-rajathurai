@@ -28,7 +28,7 @@
 		width: 100%;
 		height: 100%;
 		@include transform(translateY(3px));
-		@include transition(transform 1s ease-in-out)
+		@include transition(transform 0.6s ease-in-out)
 	}
 	&__thumbnail {
 		position: relative;
@@ -73,13 +73,14 @@
 			@include transition(all 1s ease-in-out 0s);
 		}
 		h2 {
-			letter-spacing: rem(10px);
+			letter-spacing: rem(4px);
+			@include transform(translateX(5%));
 			opacity: 0;
-			@include transition(all 1s ease-in-out 0s);
+			@include transition(all 0.5s ease-in-out 0.2s);
 		}
 		.cta {
 			opacity: 0;
-			@include transition(all 1s ease-in-out 0s);
+			@include transition(all 0.5s ease-in-out 0s);
 		}
 	}
 	&__count {
@@ -91,15 +92,17 @@
 		width: 40px;
 		text-align: center;
 		opacity: 0;
-		@include transition(all 1s ease-in-out 0s);
+		@include transform(translateY(50%));
+		@include transition(all 0.5s ease-in-out 0.2s);
 	}
 	&__project-type {
 		font-size: rem(14px);
 		color: $grey;
 		margin-bottom: 30px;
-		letter-spacing: rem(10px);
+		letter-spacing: rem(2.33px);
+		@include transform(translateX(5%));
 		opacity: 0;
-		@include transition(all 1s ease-in-out 0s);
+		@include transition(all 0.5s ease-in-out 0.2s);
 	}
 }
 
@@ -110,33 +113,34 @@
 		}
 		&__text {
 			h2 {
-				letter-spacing: rem(4px);
+				@include transform(translateX(0%));
 				opacity: 1;
-				@include transition(all 1s ease-in-out 1s);
+				@include transition(all 0.5s ease-in-out 1s);
 			}
 			.cta {
 				opacity: 1;
-				@include transition(all 1s ease-in-out 1.5s);
+				@include transition(all 0.5s ease-in-out 2s);
 			}
 			.scrollbox {
 				opacity: 1;
 				@include transform(translateY(0%));
-				@include transition(all 1s ease-in-out 1.3s);
+				@include transition(all 0.5s ease-in-out 1.3s);
 			}
 		}
 		&__count {
 			opacity: 1;	
-			@include transition(all 1s ease-in-out 1.5s);
+			@include transform(translateY(0%));
+			@include transition(all 0.5s ease-in-out 1s);
 		}
 		&__project-type {
-			letter-spacing: rem(2.33px);
+			@include transform(translateX(0%));
 			opacity: 1;
-			@include transition(all 1s ease-in-out 1.3s);
+			@include transition(all 0.5s ease-in-out 1.3s);
 		}
 		&__gallery {
 			opacity: 1;
 			@include transform(translateY(0%));
-			@include transition(all 1s ease-in-out 0.6s);
+			@include transition(all 0.5s ease-in-out 0.6s);
 		}
 	}
 }

@@ -1,9 +1,12 @@
 .view-project {
 	.teaser {
+		&__gallery {
+			overflow: visible;
+		}
 		&__gallery-container {
 			transform: translateY(0px);
 			height: auto;
-			@include transition(transform 0.05s ease-in-out);
+			@include transition(transform 0s ease-in-out);
 			img {
 				width: 100%;
 				margin-bottom: 5%;
@@ -23,6 +26,7 @@
 				font-family: $rob;
 				color: $grey;
 				opacity: 0;
+				letter-spacing: rem(1.5px);
 				@include transition(opacity 0.8s ease-in-out);
 				&--visible {
 					opacity: 1;
@@ -33,14 +37,15 @@
 			margin-bottom: 40px;
 			opacity: 0;
 			@include transform(translateX(5%));
-			@include transition(opacity 1s ease-in-out 0s, transform 1s ease-in-out 0.2s);
+			@include transition(all 0.5s ease-in-out 0.2s);
 		}
 		&__legend {
 			margin-bottom: 40px;
 			font-size: rem(14px);
 			opacity: 0;
-			letter-spacing: rem(5px);
-			@include transition(all 1s ease-in-out);
+			letter-spacing: rem(1.5px);
+			@include transform(translateX(5%));
+			@include transition(all 0.5s ease-in-out 0.2s);
 			&:before {
 				top: 50%;
 			}
@@ -53,12 +58,18 @@
 		&__gallery-container {
 			img {
 				width: auto;
-				height: calc(100vh - 283px);
-				display: block;
-				margin: 0 auto 5%;
+				height: calc(100vh - 270px);
+    			margin: 0 auto;
+    			display: block;
+    			opacity: 1;
 			}
 		}
 	}
+	.next-project {
+		opacity: 0;
+		@include transition(opacity 0.8s ease-in-out);
+	}
+
 }
 
 .view-loaded {
@@ -66,20 +77,32 @@
 		&__description {
 			opacity: 1;
 			@include transform(translateX(0%));
-			@include transition(all 1s ease-in-out 1.5s);
+			@include transition(all 0.5s ease-in-out 1.5s);
 		}
 		&__legend {
 			opacity: 1;
-			letter-spacing: rem(1px);
-			@include transition(all 1s ease-in-out 1.7s);
+			@include transform(translateX(0%));
+			@include transition(all 0.5s ease-in-out 1.7s);
 		}
 	}
 	&.view-project .teaser__text .scrollbox {
 		opacity: 1;
-		@include transition(opacity 1s ease-in-out 1.3s);
+		@include transition(opacity 0.5s ease-in-out 1.3s);
 		&--hidden {
 			opacity: 0;
-			@include transition(opacity 0.8s ease-in-out 0s);
+			@include transition(opacity 0.3s ease-in-out 0s);
 		}
+	}
+	.is-mobile {
+
+		.scrollbox {
+			opacity: 0 !important;
+		}
+
+		.next-project {
+			opacity: 1;
+			@include transition(opacity 0.8s ease-in-out 1.7s);
+		}
+
 	}
 }

@@ -11,7 +11,12 @@ module.exports = (function () {
 
 	var init = () => {
 
-		_initEvents()
+		if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+			$about.classList.add(VISIBLE_CLASS)
+			$aboutToggler.innerHTML = LESS_TEXT
+		} else {
+			_initEvents()
+		}
 
 	};
 

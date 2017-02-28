@@ -3,12 +3,29 @@
 	padding: 50px;
 	box-sizing: border-box;
 	z-index: 10;
+	@include mobile {
+		display: none;
+	}
+	h1 {
+		opacity: 1;
+		@include transform(translateX(0%));
+		@include transition(all 0.1s ease-in-out 0s);
+	}
 	p {
 		color: #4C4C4C;
 		font-size: rem(14px);
 		letter-spacing: rem(2.8px);
 		line-height: rem(19px);
 		margin-bottom: 20px;
+		opacity: 1;
+		@include transform(translateX(0%));
+		@include transition(all 0.1s ease-in-out 0.1s);
+	}
+	a.cta {
+		display: inline-block;
+		opacity: 1;
+		@include transform(translateX(0%));
+		@include transition(all 0.1s ease-in-out 0.1s);		
 	}
 	a:not(.cta) {
 		position: absolute;
@@ -16,5 +33,11 @@
 		right: 50px;
 		left: 50px;
 		bottom: 90px;
+	}
+	&--hidden {
+		h1, p, a.cta {
+			@include transform(translateX(-5%));
+			opacity: 0;
+		}
 	}
 }

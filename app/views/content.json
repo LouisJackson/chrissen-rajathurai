@@ -60,33 +60,13 @@
 				"description": "Delivr’Hetic is a school project made for a special week called “Intensive Week”. We had 5 days to design and develop a mobile app. We choose to create an app that let students of our school order meals to other students who are going to buy lunch outside.",
 				"images": [
 					{
-						"source": "img/project3/splash.png",
-						"legend": "Splash screen"
-					},
-					{
-						"source": "img/project3/phone-number.png",
-						"legend": "Phone number screen"
-					},
-					{
-						"source": "img/project3/delivery-list.png",
-						"legend": "Delivery list"
-					},
-					{
-						"source": "img/project3/order.png",
-						"legend": "Order screen"
-					},
-					{
-						"source": "img/project3/confirm-order.png",
-						"legend": "Confirm order screen"
-					},
-					{
-						"source": "img/project3/follow-order.png",
-						"legend": "Order follow-up screen"
+						"source": "img/project3/delivrhetic.gif",
+						"legend": "Application animation"
 					}
 				],
 				"next-project": {
-					"title": "LBPC",
-					"link": "/project/lbpc"
+					"title": "TeslaXHer",
+					"link": "/project/tesla"
 				}
 			}
 		}

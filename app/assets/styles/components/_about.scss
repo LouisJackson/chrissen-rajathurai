@@ -9,14 +9,43 @@
 	padding: 233px 50px 50px;
 	visibility: hidden;
 	opacity: 0;
-	@include transition(all 1s ease-in-out);
+	@include transition(all 0.5s ease-in-out 0.5s);
+	@include mobile {
+		padding: 35px;
+		overflow: scroll;
+	}
+	&__header {
+		display: none;
+		padding: 20px 0;
+		h1 {
+			opacity: 1;
+			@include transform(translateX(0%));
+		}
+		p {
+			color: #4C4C4C;
+			font-size: rem(14px);
+			letter-spacing: rem(2.8px);
+			line-height: rem(19px);
+			margin-bottom: 20px;
+			opacity: 1;
+			@include transform(translateX(0%));
+		}
+		@include mobile {
+			display: block;
+		}
+	}
 	&__introduction {
 		width: 65%;
 		float: left;
+		opacity: 0;
+		@include transition(opacity 0.5s ease-in-out 0s);
 		p {
 			color: $grey;
 			width: 100%;
 			max-width: 60%;
+			@include mobile {
+				max-width: 100%;
+			}
 			&:not(:last-child) {
 				margin-bottom: rem(26px);
 			}
@@ -24,26 +53,58 @@
 				color: $white;
 			}
 		}
+		@include mobile {
+			width: 100%;
+		}
 	}
 	&__informations {
 		width: 30%;
 		float: left;
 		padding-left: 80px;
 		box-sizing: border-box;
+		@include mobile {
+			padding-left: 0px;
+			padding-top: 50px;
+			width: 100%;
+		}
 		h2 {
 			margin-bottom: 40px;
+			@include transform(translateX(5%));
+			opacity: 0;
+			@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
 		}
 	}
 
 	&__socials {
 		li {
 			margin-bottom: rem(10px);
+			@include transform(translateX(5%));
+			opacity: 0;
+			@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
+			&:nth-child(2) {
+				@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
+			}
+			&:nth-child(3) {
+				@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
+			}
+			&:nth-child(4) {
+				@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
+			}
+			&:nth-child(5) {
+				@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
+			}
 		}
 	}
 
 	&__credits {
 		color: $grey;
 		margin-top: 100px;
+		@include transform(translateX(5%));
+		opacity: 0;
+		@include transition(opacity 0.5s ease-in-out 0s, transform 0s ease-in-out 1.5s);
+		@include mobile {
+			margin-top: 50px;
+		}
 		p:before {
 			top: 50%;
 		}
@@ -51,5 +112,41 @@
 	&--visible {
 		visibility: visible;
 		opacity: 1;
+		@include transition(all 0.5s ease-in-out 0s);
+		.about__introduction {
+			opacity: 1;
+			@include transition(opacity 0.5s ease-in-out 0.8s);
+		}
+		.about__socials {
+			li {
+				opacity: 1;
+				@include transform(translateX(0%));
+				@include transition(all 0.5s ease-in-out 1s);
+				&:nth-child(2) {
+					@include transition(all 0.5s ease-in-out 1.2s);
+				}
+				&:nth-child(3) {
+					@include transition(all 0.5s ease-in-out 1.4s);
+				}
+				&:nth-child(4) {
+					@include transition(all 0.5s ease-in-out 1.6s);
+				}
+				&:nth-child(5) {
+					@include transition(all 0.5s ease-in-out 1.8s);
+				}
+			}
+		}
+		.about__informations {
+			h2 {
+				opacity: 1;
+				@include transform(translateX(0%));	
+				@include transition(all 1s ease-in-out 0.6s);
+			}
+		}
+		.about__credits {
+			opacity: 1;
+			@include transform(translateX(0%));
+			@include transition(all 1s ease-in-out 1.8s);
+		}
 	}
 }

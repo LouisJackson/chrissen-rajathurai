@@ -10,8 +10,6 @@ module.exports = (function () {
 
 		$project = document.querySelectorAll('.view-project')[0]
 
-		console.log($project)
-
 		if ($project != null) {
 			$gallery.galleryContainer = document.querySelectorAll('.teaser__gallery-container')[0]
 			$gallery.gallery = document.querySelectorAll('.teaser__gallery')[0]
@@ -19,6 +17,9 @@ module.exports = (function () {
 			$gallery.scrollbox = document.querySelectorAll('.scrollbox')[0]
 			$gallery.images = document.querySelectorAll('.teaser__gallery-container img')
 			$gallery.legend = document.querySelectorAll('.teaser__legend')[0]
+			$gallery.header = document.querySelectorAll('.header')[0]
+			$gallery.header.classList.remove('header--hidden')
+
 			_initEvents()
 			_initVariables()
 		}
@@ -27,7 +28,8 @@ module.exports = (function () {
 
 	var _initEvents = () => {
 
-		$project.addEventListener('mousewheel', _bindMouseWheel)
+		if (document.querySelectorAll('.is-mobile')[0] == null)
+			$project.addEventListener('mousewheel', _bindMouseWheel)
 		window.addEventListener('resize', _initVariables)		
 
 	}
@@ -54,13 +56,15 @@ module.exports = (function () {
 
 	var _bindMouseWheel = (e) => {
 
-		let scrollValue = e.deltaY * -0.6
+		let scrollValue = e.deltaY * -0.4
 		let currTransform = window.getComputedStyle($gallery.galleryContainer,null).getPropertyValue('transform')
 		let currScroll = _getComputedTranslateY(currTransform);
 
 		let newScrollValue = currScroll + scrollValue
-		if (newScrollValue > 0)
+		if (newScrollValue > 0) {
 			newScrollValue = 0
+			$gallery.header.classList.remove('header--hidden')
+		}
 		else if (newScrollValue < MAX_SCROLL) {
 			newScrollValue = MAX_SCROLL
 			$gallery.nextProject.classList.add('next-project--visible');
@@ -69,19 +73,27 @@ module.exports = (function () {
 		else {
 			$gallery.nextProject.classList.remove('next-project--visible');
 			$gallery.scrollbox.classList.remove('scrollbox--hidden');
+			$gallery.header.classList.add('header--hidden')
 		}
+
+		updateLegend(newScrollValue);
+
+		$gallery.galleryContainer.style.transform = `translateY(${newScrollValue}px)`
+
+	}
+
+	var updateLegend = (scrollValue) => {
 		
 		let index = 0
 
 		POSITION.forEach(function (pos, i) {
-			if ((-1*newScrollValue) > pos)
+			if ((-1*scrollValue) > pos)
 				index = i
 		})
 
 		let legend = $gallery.images[index].getAttribute('alt')
 
 		$gallery.legend.innerHTML = legend
-		$gallery.galleryContainer.style.transform = `translateY(${newScrollValue}px)`
 
 	}
 
@@ -95,7 +107,8 @@ module.exports = (function () {
 	}
 
 	return {
-		init: init
+		init: init,
+		updateLegend: updateLegend
 	}
 
 })();
