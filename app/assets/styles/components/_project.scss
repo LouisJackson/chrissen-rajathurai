@@ -9,7 +9,7 @@
 			@include transition(transform 0s ease-in-out);
 			img {
 				width: 100%;
-				margin-bottom: 5%;
+				margin-bottom: 10%;
 			}
 		}
 		&__text {
@@ -18,6 +18,12 @@
 				bottom: 50px;
 				opacity: 0;
 				@include transition(opacity 0.8s ease-in-out);
+				@include tablet {
+					display: none;
+				}
+				&__down {
+					cursor: initial;
+				}
 			}
 			.next-project {
 				position: absolute;
@@ -27,10 +33,18 @@
 				color: $grey;
 				opacity: 0;
 				letter-spacing: rem(1.5px);
-				@include transition(opacity 0.8s ease-in-out);
+				visibility: hidden;
+				@include transform(translateY(50%));
+				@include transition(opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visible 0.5s ease-in-out);
 				&--visible {
-					opacity: 1;
+					opacity: 0;
+					visibility: visible;
+					@include transform(translateY(0%));
 				}
+			}
+			> .cta {
+				position: absolute;
+				top: -122px;
 			}
 		}
 		&__description {
@@ -56,23 +70,20 @@
 .is-mobile {
 	.teaser {
 		&__gallery-container {
+			padding-bottom: 60px;
 			img {
 				width: auto;
 				height: calc(100vh - 270px);
-    			margin: 0 auto;
+    			margin: 0 auto 10%;
     			display: block;
     			opacity: 1;
 			}
 		}
 	}
-	.next-project {
-		opacity: 0;
-		@include transition(opacity 0.8s ease-in-out);
-	}
 
 }
 
-.view-loaded {
+.view-project.view-loaded {
 	.teaser {
 		&__description {
 			opacity: 1;
@@ -84,6 +95,9 @@
 			@include transform(translateX(0%));
 			@include transition(all 0.5s ease-in-out 1.7s);
 		}
+		&__project-type {
+			@include transition(all 0.5s ease-in-out 1.3s);
+		}
 	}
 	&.view-project .teaser__text .scrollbox {
 		opacity: 1;
@@ -93,16 +107,11 @@
 			@include transition(opacity 0.3s ease-in-out 0s);
 		}
 	}
-	.is-mobile {
-
-		.scrollbox {
-			opacity: 0 !important;
-		}
-
+	.teaser__text {
 		.next-project {
-			opacity: 1;
-			@include transition(opacity 0.8s ease-in-out 1.7s);
-		}
-
+			&--visible {
+				opacity: 1;
+			}
+		}	
 	}
 }

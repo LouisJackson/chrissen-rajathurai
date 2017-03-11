@@ -8,7 +8,7 @@
 				"type": "UX/UI",
 				"link": "/project/tesla",
 				"teaser": "img/project-1-teaser.png",
-				"description": "Team project for school where the main goal was to redesign Tesla’s dashboard, in the style of a movie of our choice. We chose the movie Her.<br>The main challenge for us was that we had to design an entire interface from a movie that contained only very few graphical elements.",
+				"description": "Team project for school where the main goal was to redesign Tesla’s dashboard, in the style of a movie of our choice. We chose the movie Her. The main challenge for us was that we had to design an entire interface from a movie that contained only very few graphical elements.",
 				"images": [
 					{
 						"source": "img/project1/dashboard.png",
@@ -62,6 +62,22 @@
 					{
 						"source": "img/project3/delivrhetic.gif",
 						"legend": "Application animation"
+					},
+					{
+						"source": "img/project3/1.png",
+						"legend": "Delivery list"
+					},
+					{
+						"source": "img/project3/2.png",
+						"legend": "Products list"
+					},
+					{
+						"source": "img/project3/3.png",
+						"legend": "Order"
+					},
+					{
+						"source": "img/project3/4.png",
+						"legend": "Order confirmed"
 					}
 				],
 				"next-project": {

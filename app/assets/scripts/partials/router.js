@@ -20,6 +20,9 @@ module.exports = (function () {
 		    window.content = JSON.parse(request.responseText)
 			_bindLinks()
 			_onStateChange()
+			window.onpopstate = function(event) {
+			 	_onStateChange()
+			}
 		  }
 		}
 

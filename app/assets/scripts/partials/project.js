@@ -28,8 +28,7 @@ module.exports = (function () {
 
 	var _initEvents = () => {
 
-		if (document.querySelectorAll('.is-mobile')[0] == null)
-			$project.addEventListener('mousewheel', _bindMouseWheel)
+		$project.addEventListener('mousewheel', _bindMouseWheel)
 		window.addEventListener('resize', _initVariables)		
 
 	}

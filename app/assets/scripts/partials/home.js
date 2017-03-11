@@ -34,7 +34,7 @@ module.exports = (function () {
 		
 		PROJECT_COUNT = projects.length
 
-		$textFields.title = document.querySelectorAll('.teaser__text h2')[0]
+		$textFields.title = document.querySelectorAll('.teaser__title')[0]
 		$textFields.type = document.querySelectorAll('.teaser__project-type')[0]
 		$textFields.link = document.querySelectorAll('.teaser__text .cta')[0]
 
@@ -50,21 +50,24 @@ module.exports = (function () {
 
 		THUMBNAIL_HEIGHT = _outerHeight($slider.slides[0])
 
-		_changeText();
-		_initEvents();
-		_initKeyboard();
+		_changeText('-down')
+		_initEvents()
+		_initKeyboard()
 
 	}
 
 	var _initEvents = () => {
 
 		$home.addEventListener('mousewheel', _bindMouseWheel)
+		$slider.scrollDown.addEventListener('click', _bindScrollDown)
+		$slider.scrollUp.addEventListener('click', _bindScrollUp)
+		$slider.scrollDown.addEventListener('click', () => {})
 
 	}
 
 	var _initKeyboard = () => {
 
-		document.addEventListener('keydown', _bindKeyboard);
+		document.addEventListener('keydown', _bindKeyboard)
 	}
 
 	var _bindMouseWheel = (e) => {
@@ -75,6 +78,26 @@ module.exports = (function () {
 			_goToProject('next')
 		else 
 			_goToProject('prev')
+
+		setTimeout(() => _initEvents(), ANIMATION_DURATION)
+
+	}
+
+	var _bindScrollDown = (e) => {
+
+		$slider.scrollDown.removeEventListener('click', _bindScrollDown)
+
+		_goToProject('next')
+
+		setTimeout(() => _initEvents(), ANIMATION_DURATION)
+
+	}
+
+	var _bindScrollUp = (e) => {
+
+		$slider.scrollUp.removeEventListener('click', _bindScrollUp)
+
+		_goToProject('prev')
 
 		setTimeout(() => _initEvents(), ANIMATION_DURATION)
 
@@ -114,17 +137,21 @@ module.exports = (function () {
 		var translate = -CURRENT_PROJECT * THUMBNAIL_HEIGHT
 		CURRENT_PROJECT = CURRENT_PROJECT + 1
 		$slider.container.style.transform = `translateY(${translate}px)`
-		_changeText()
+		_changeText('-down')
 	}
 
 	var _goToPrev = () => {
 		CURRENT_PROJECT = CURRENT_PROJECT - 1
 		var translate = -(CURRENT_PROJECT - 1) * THUMBNAIL_HEIGHT
 		$slider.container.style.transform = `translateY(${translate}px)`
-		_changeText()
+		_changeText('-up')
 	}
 
-	var _changeText = () => {
+	var _changeText = (way_prefix) => {
+
+		$slider.countCurrent.classList.add(`teaser__count-current--out${way_prefix}`)
+		$textFields.title.classList.add(`teaser__title--out${way_prefix}`)
+		$textFields.type.classList.add(`teaser__project-type--out${way_prefix}`)
 
 		//set classes
 		if ($slider.slides[CURRENT_PROJECT - 2] != null) {
@@ -149,21 +176,40 @@ module.exports = (function () {
 		$slider.slides[CURRENT_PROJECT - 1].classList.remove(PREV_CLASS, NEXT_CLASS)
 
 		var content = projects[CURRENT_PROJECT-1]
-		$slider.countCurrent.innerHTML = CURRENT_PROJECT
 		$slider.background.style.backgroundImage = `url(${content.teaser})`
 
 		//change text
-		$textFields.title.innerHTML = content.title
-		$textFields.type.innerHTML = content.type
 		$textFields.link.setAttribute('href', content.link)
+
+		setTimeout(() => {
+
+			$slider.countCurrent.classList.remove(`teaser__count-current--out${way_prefix}`)
+			$textFields.title.classList.remove(`teaser__title--out${way_prefix}`)
+			$textFields.type.classList.remove(`teaser__project-type--out${way_prefix}`)
+			$slider.countCurrent.classList.add(`teaser__count-current--in${way_prefix}`)
+			$textFields.title.classList.add(`teaser__title--in${way_prefix}`)
+			$textFields.type.classList.add(`teaser__project-type--in${way_prefix}`)
+
+			$slider.countCurrent.innerHTML = CURRENT_PROJECT
+			$textFields.title.innerHTML = content.title
+			$textFields.type.innerHTML = content.type
+
+			setTimeout(() => {
+
+				$slider.countCurrent.classList.remove(`teaser__count-current--in${way_prefix}`)
+				$textFields.title.classList.remove(`teaser__title--in${way_prefix}`)
+				$textFields.type.classList.remove(`teaser__project-type--in${way_prefix}`)
+
+			}, 100)
+		}, 600)
 	}
 
 	var _outerHeight = (el) => {
-		var height = el.offsetHeight;
-		var style = getComputedStyle(el);
+		var height = el.offsetHeight
+		var style = getComputedStyle(el)
 
-		height += parseInt(style.marginTop) + parseInt(style.marginBottom);
-		return height;
+		height += parseInt(style.marginTop) + parseInt(style.marginBottom)
+		return height
 	}
 
 	return {
