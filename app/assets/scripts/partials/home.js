@@ -59,6 +59,7 @@ module.exports = (function () {
 	var _initEvents = () => {
 
 		$home.addEventListener('mousewheel', _bindMouseWheel)
+		$home.addEventListener('DOMMouseScroll', _bindMouseWheel)
 		$slider.scrollDown.addEventListener('click', _bindScrollDown)
 		$slider.scrollUp.addEventListener('click', _bindScrollUp)
 		$slider.scrollDown.addEventListener('click', () => {})
@@ -72,9 +73,13 @@ module.exports = (function () {
 
 	var _bindMouseWheel = (e) => {
 
-		$home.removeEventListener('mousewheel', _bindMouseWheel)
 
-		if (e.wheelDelta < 0)
+		$home.removeEventListener('mousewheel', _bindMouseWheel)
+		$home.removeEventListener('DOMMouseScroll', _bindMouseWheel)
+
+		let delta = e.wheelDelta ? e.wheelDelta : -e.detail
+
+		if (delta < 0)
 			_goToProject('next')
 		else 
 			_goToProject('prev')

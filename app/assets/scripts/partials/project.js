@@ -28,7 +28,7 @@ module.exports = (function () {
 
 	var _initEvents = () => {
 
-		$project.addEventListener('mousewheel', _bindMouseWheel)
+		$project.addEventListener('wheel', _bindMouseWheel)
 		window.addEventListener('resize', _initVariables)		
 
 	}
