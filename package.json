@@ -31,7 +31,7 @@
     "gulp-wrap": "^0.13.0",
     "handlebars": "4.0.0",
     "imagemin-pngquant": "^4.2.0",
-    "jquery": "^2.1.4",
+    "jquery": "^3.0.0",
     "minimist": "^1.2.0",
     "node-bourbon": "^4.2.3",
     "normalize.scss": "^0.1.0",
